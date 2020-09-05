@@ -1,0 +1,22 @@
+{
+  "name": "movie-finder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laks96/movie-finder.git"
+  },
+  "author": "Laks96",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Laks96/movie-finder/issues"
+  },
+  "homepage": "https://github.com/Laks96/movie-finder#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1"
+  }
+}
