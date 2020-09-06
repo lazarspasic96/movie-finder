@@ -1,4 +1,7 @@
+import   '../css/style.css' 
 import MostPopular from './models/MostPopular'
+
+
 
 
 // central state of app
