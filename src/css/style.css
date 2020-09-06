@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;800&display=swap");
+
+
+
+.nav-item > a {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+  margin-right: 19px;
+  color: #6c63ff;
+}
+
+.nav-item:hover {
+    transform: scale(1.1); 
+}
