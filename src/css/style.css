@@ -7,7 +7,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;800&display=swap");
 
-
+header {
+  margin-top: 10px;
+}
 
 .nav-item > a {
   font-style: normal;
@@ -20,5 +22,80 @@
 }
 
 .nav-item:hover {
-    transform: scale(1.1); 
+  transform: scale(1.1);
 }
+
+.img-container {
+  margin-top: 125px;
+}
+
+.img-container > img {
+  width: 315px;
+  height: 329px;
+}
+
+.logo-container > img {
+  position: absolute;
+  width: 59px;
+  left: 52px;
+  top: 19px;
+}
+
+.logo-container > img:hover {
+  animation: shake 0.9s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+}
+
+
+
+.search-container > p {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 42px;
+    text-align: center;
+    color: #6c63ff;
+    width: 404px;
+    height: 41px;
+    margin-top: 158px;
+}
+
+.search-container > div > input {
+    border: none;
+    border-bottom: 1px solid #6c63ff;
+    width: 100%;
+    text-align: left;
+    outline: none;
+}
+
+.search-container > div {
+    width: 404px;
+    padding-left: 15px;
+}
+
+.search-container > div:hover {
+    transform: scale(1.1);
+    
+}
+
+
+
+
+
+
