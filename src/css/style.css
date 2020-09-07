@@ -33,6 +33,7 @@ header {
 
 .img-container {
   margin-top: 125px;
+  text-align: center;
 }
 
 .img-container > img {
@@ -65,6 +66,11 @@ header {
   30% {
     transform: translate(3px, 2px) rotate(0deg);
   }
+}
+
+
+.search-container {
+  text-align: center;
 }
 
 .search-container > p {
