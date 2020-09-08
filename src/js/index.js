@@ -12,7 +12,7 @@ const state = {}
 
 const controlSearch = async () => {
 
-    const query = 'bladerunner'
+    const query = SearchMovieView.getInput()
 
     if (query) {
         state.searchMovie = new SearchMovie(query)
@@ -29,14 +29,17 @@ const controlSearch = async () => {
 
 
 //onSearch
-domElements.searchBtn.addEventListener('click', event => {
-    
+
+
+domElements.searchForm.addEventListener('submit', event => {
+    event.preventDefault()
+    controlSearch()
 
 })
 
 
 
-controlSearch()
+
 
 
 

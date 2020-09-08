@@ -85,7 +85,7 @@ header {
   margin-top: 158px;
 }
 
-.search-container > div > input {
+.search-input{
   border: none;
   border-bottom: 1px solid #6c63ff;
   width: 65%;
@@ -101,7 +101,7 @@ header {
   padding-left: 15px;
 }
 
-.search-container > div > input:hover {
+.search-input:hover {
   transform: scale(1.1);
 }
 
@@ -112,13 +112,24 @@ header {
   width: 55px;
   background-color: inherit;
   color: #6c63ff;
-
 }
 
 .content-div {
   width: 100%;
+  margin: auto;
+  padding: 50px;
+  padding-right: 57px;
+
+  
 }
 
 .card {
-  width: 50px;
+  width: 255px;
+  height: 458px;
+  background: #ffffff;
+  box-shadow: 20px 20px 25px rgba(195, 205, 215, 0.5);
+  border-radius: 33px;
+  margin: auto;
+  margin-right: 56px;
+  margin-bottom: 46px;
 }
