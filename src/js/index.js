@@ -1,5 +1,7 @@
 import '../css/style.css'
 import SearchMovie from './models/SearchMovie'
+import * as domElements from './base'
+import * as SearchMovieView from './views/SearchMovieView'
 
 
 
@@ -10,15 +12,28 @@ const state = {}
 
 const controlSearch = async () => {
 
-    const query = 'batman'
+    const query = 'bladerunner'
 
     if (query) {
         state.searchMovie = new SearchMovie(query)
-        
         await state.searchMovie.getMovies(query)
+
+        console.log(state.searchMovie)
+        SearchMovieView.renderSearchView(state.searchMovie.moviesData)
+
+
     }
 
 }
+
+
+
+//onSearch
+domElements.searchBtn.addEventListener('click', event => {
+    
+
+})
+
 
 
 controlSearch()

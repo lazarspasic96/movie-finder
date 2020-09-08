@@ -114,3 +114,11 @@ header {
   color: #6c63ff;
 
 }
+
+.content-div {
+  width: 100%;
+}
+
+.card {
+  width: 50px;
+}
