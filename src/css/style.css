@@ -68,20 +68,19 @@ header {
   }
 }
 
-
 .search-container {
   text-align: center;
+  padding-right: 0px;
 }
 
 .search-container > p {
-  font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
   font-size: 25px;
   line-height: 42px;
-  text-align: center;
+  text-align: left;
   color: #6c63ff;
-  width: 404px;
+  width: 415px;
   height: 41px;
   margin-top: 158px;
 }
@@ -89,19 +88,29 @@ header {
 .search-container > div > input {
   border: none;
   border-bottom: 1px solid #6c63ff;
-  width: 100%;
+  width: 65%;
   text-align: left;
   outline: none;
-  background-color: inherit
-
-  
+  background-color: inherit;
+  margin-left: -78px;
+  margin-right: 13px;
 }
 
 .search-container > div {
-  width: 404px;
+  width: 415px;
   padding-left: 15px;
 }
 
-.search-container > div:hover {
+.search-container > div > input:hover {
   transform: scale(1.1);
+}
+
+.search-btn {
+  outline: none !important;
+  border-radius: 35px;
+  border: 1px solid #6c63ff;
+  width: 55px;
+  background-color: inherit;
+  color: #6c63ff;
+
 }
