@@ -12,12 +12,11 @@ const state = {}
 
 const controlSearch = async () => {
 
-    const query = SearchMovieView.getInput()
+    const query = SearchMovieView.getInput() 
 
     if (query) {
         state.searchMovie = new SearchMovie(query)
         await state.searchMovie.getMovies(query)
-
         console.log(state.searchMovie)
         SearchMovieView.renderSearchView(state.searchMovie.moviesData)
 
