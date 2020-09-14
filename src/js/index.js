@@ -3,7 +3,7 @@ import SearchMovie from './models/SearchMovie'
 import * as domElements from './base'
 import * as SearchMovieView from './views/SearchMovieView'
 import { SingleMovie } from './models/SingleMovie'
-import {singleMovieView} from './views/SingleMovieView'
+import { singleMovieView } from './views/SingleMovieView'
 import { createHashHistory } from 'history';
 let history = createHashHistory();
 
@@ -38,12 +38,34 @@ history.listen(({ location, action }) => {
 });
 
 window.addEventListener('load', e => {
-    if (history.location.pathname === '/movies' && history.location.search) {
-        history.push({
-            pathname: history.location.pathname,
-            search: history.location.search
-        })
+
+
+    switch (history.location.pathname) {
+        case '/movies':
+            if (history.location.search) {
+                history.push({
+                    pathname: history.location.pathname,
+                    search: history.location.search
+                })
+            }
+            break;
+
+        case '/single-movie':
+            if (history.location.search) {
+                history.push({
+                    pathname: history.location.pathname,
+                    search: history.location.search
+                })
+            }
+
+        default:
+            break;
     }
+
+
+
+
+
 })
 
 
