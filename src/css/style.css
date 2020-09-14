@@ -8,13 +8,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;800&display=swap");
 
 body {
-  background-color: #fee2f8;
-  background-image: linear-gradient(315deg, #fee2f8 0%, #dcf8ef 74%);
+  background-color: #ffffff;
   background-attachment: fixed;
 }
 header {
-  margin-top: 10px;
-  margin-bottom: 29px;
+  margin-top: 23px;
+  margin-bottom: 15px;
   color: #6c63ff;
 }
 
@@ -38,10 +37,9 @@ header {
 }
 
 .img-container > img {
- /*   width: 315px;
+  /*   width: 315px;
   height: 329px;  */
   width: 65%;
-
 }
 
 .logo-container > img {
@@ -49,26 +47,6 @@ header {
   width: 59px;
   left: 52px;
   top: 19px;
-}
-
-.logo-container > img:hover {
-  animation: shake 0.9s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes shake {
-  0% {
-    transform: translate(1px, 1px) rotate(0deg);
-  }
-  10% {
-    transform: translate(-1px, -2px) rotate(-1deg);
-  }
-  20% {
-    transform: translate(-3px, 0px) rotate(1deg);
-  }
-  30% {
-    transform: translate(3px, 2px) rotate(0deg);
-  }
 }
 
 .search-container {
@@ -88,7 +66,7 @@ header {
   margin-top: 158px;
 }
 
-.search-input{
+.search-input {
   border: none;
   border-bottom: 1px solid #6c63ff;
   width: 65%;
@@ -120,7 +98,7 @@ header {
 .content-div {
   width: 100%;
   margin: auto;
-  padding: 25px
+  padding: 25px;
 }
 
 .card {
@@ -128,15 +106,18 @@ header {
   height: 458px;
   background: #ffffff;
   box-shadow: 20px 20px 25px rgba(195, 205, 215, 0.5);
-  border-radius: 33px;
+  border-radius: 16px;
   margin: auto;
   margin-right: 56px;
   margin-bottom: 46px;
 }
 
+.card:hover {
+  box-shadow: 20px 20px 20px 20px rgba(200, 205, 215, 0.4);
+}
 
 .card-img {
-  border-radius: 31px 31px 0px 0px;
+  border-radius: 16px 16px 0px 0px;
   width: 100%;
   height: 346px;
 }
@@ -148,18 +129,52 @@ header {
 }
 
 .card-info > p {
-  
-font-family: "Montserrat";
-font-style: normal;
-font-weight: 500;
-font-size: 13px;
-padding: 20px 10px 0px;
-color:  #000000;
-text-align: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 20px 10px 0px;
+  color: #000000;
+  text-align: center;
 }
 
 .icon-heart {
   position: absolute;
   bottom: 8px;
   right: 8px;
+}
+
+.btn-compare {
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #6c63ff;
+  color: #6c63ff;
+  box-sizing: border-box;
+  border-radius: 35px;
+  right: 32px;
+  bottom: 13px;
+  width: 80px;
+  line-height: 25px;
+  font-size: 13px;
+}
+
+.btn-favourite {
+
+  position: absolute;
+  font-weight: 500;
+  background: #ffffff;
+  border: 1px solid #6c63ff;
+  color: #6c63ff;
+  box-sizing: border-box;
+  border-radius: 35px;
+  left: 32px;
+  bottom: 13px;
+  width: 83px;
+  line-height: 25px;  
+  font-size: 13px;
+}
+
+.btn-favourite:hover {
+  background-color: #6c63ff;
+  color: #ffffff;
 }

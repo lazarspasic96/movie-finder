@@ -32,24 +32,10 @@ const controlSearch = async () => {
 
 domElements.searchForm.addEventListener('submit', event => {
     event.preventDefault()
+    window.location.hash = SearchMovieView.getInput().replace('#', '')
     controlSearch()
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //onhashchange routing 
