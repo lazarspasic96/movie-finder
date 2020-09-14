@@ -5,9 +5,9 @@ import basicHeart from '../img/Heart.png'
 export const card = (movie, favourite = false) => {
     console.log(movie)
     let card = `
-        <div class = 'card'> 
+        <div class = 'card' data-movieId = ${movie.imdbID}> 
         
-            <div class = 'card-info' data-movieId = ${movie.imdbID}> 
+            <div class = 'card-info'> 
                 <div class = 'card-img'> 
                     <img class = 'movie-poster' src = '${movie.Poster !== 'N/A' ? movie.Poster : poster}' />
                 </div>

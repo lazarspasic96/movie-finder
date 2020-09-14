@@ -4,45 +4,11 @@ import * as domElements from './base'
 import * as SearchMovieView from './views/SearchMovieView'
 import { SingleMovie } from './models/SingleMovie'
 import { createHashHistory } from 'history';
-
-
-/* ROUTING */
 let history = createHashHistory();
-
-history.listen(({ location, action }) => {
-    console.log(location)
-    switch (location.pathname) {
-        case '/':
-            window.location.reload()
-            break;
-        case '/movies':
-            const query = new URLSearchParams(location.search).get('searched')
-            console.log(query)
-            controlSearch(query)
-            break;
-        default:
-            break;
-    }
-
-});
-
-window.addEventListener('load', e => {
-    if(history.location.pathname === '/movies' && history.location.search) {
-        history.push({
-            pathname: history.location.pathname,
-            search: history.location.search
-        })
-    }
-})
-
-
-
-
 
 
 // central state of app
 const state = {}
-
 
 //GET LIST OF MOVIES ON SEARCH
 const controlSearch = async (input) => {
@@ -73,19 +39,75 @@ domElements.searchForm.addEventListener('submit', event => {
 
 
 // GET A SINGLE MOVIE ON CLICK
-
-const controlSingleMovie = async () => {
-
-    const id = 'tt3896198'
+const controlSingleMovie = async (id) => {
 
     if (id) {
         state.singleMovie = new SingleMovie(id)
         await state.singleMovie.getSingleMovie()
-        console.log(state)
+        console.log('radiiiiiiiiiiii')
+    }
+}
+
+
+domElements.contentDiv.addEventListener('click', e => {
+    const card = event.target.closest('.card')
+    if(card) {
+        let singleMovieId = card.dataset.movieid
+        history.push({
+            pathname: '/single-movie',
+            search: `?movieId=${singleMovieId}`
+
+        })
+    }
+})
+
+
+
+
+
+
+
+
+/* ROUTING */
+
+
+history.listen(({ location, action }) => {
+    switch (location.pathname) {
+        case '/':
+            window.location.reload()
+            break;
+        case '/movies':
+            const query = new URLSearchParams(location.search).get('searched')
+            controlSearch(query)
+            break;
+        case '/about':
+            console.log('about')
+            break;
+        case '/compare-movies':
+            console.log('compare')
+            break;
+        case '/favourite':
+            console.log('about')
+            break;
+        case '/single-movie':
+            const movieId = new URLSearchParams(location.search).get('movieId')
+            controlSingleMovie(movieId)
+            break;
+        default:
+            break;
     }
 
+});
 
-}
+window.addEventListener('load', e => {
+    if (history.location.pathname === '/movies' && history.location.search) {
+        history.push({
+            pathname: history.location.pathname,
+            search: history.location.search
+        })
+    }
+})
+
 
 
 

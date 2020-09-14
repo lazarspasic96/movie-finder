@@ -10,6 +10,5 @@ export default class SearchMovie {
         const results = await axios(`http://www.omdbapi.com/?apikey=b32e7243&s=${this.query}&page=1`)
         console.log(this.moviesData = results.data.Search)
         this.moviesData = results.data.Search
-
     }
 }
