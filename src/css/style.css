@@ -159,7 +159,6 @@ header {
 }
 
 .btn-favourite {
-
   position: absolute;
   font-weight: 500;
   background: #ffffff;
@@ -170,11 +169,94 @@ header {
   left: 32px;
   bottom: 13px;
   width: 83px;
-  line-height: 25px;  
+  line-height: 25px;
   font-size: 13px;
 }
 
 .btn-favourite:hover {
+  background-color: #6c63ff;
+  color: #ffffff;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.singleMovie-content {
+  flex-direction: row;
+  justify-content:  center;
+  padding: 18px;
+ 
+}
+
+.imgMovie-container {
+  width: 300px;
+  height: 444px;
+  border-radius: 0px 0px 41px 0px;
+  box-shadow: 20px 20px 25px rgba(195, 205, 215, 0.5);
+}
+
+.imgMovie-container > img {
+  border-radius: 0px 0px 41px 0px;
+  width: inherit;
+  height: inherit;
+}
+
+.singleMovie-mainInfo {
+  width: 50%;
+  font-family: "Montserrat";
+  text-align: center;
+  padding-left: 80px;
+}
+
+.singleMovie-mainInfo > h3 {
+  font-weight: 500;
+  font-size: 28px;
+  padding-bottom: 15px;
+}
+
+.singleMovie-mainInfo > p {
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+
+
+.btn-singleMovie-favourite {
+  background: #ffffff;
+  border: 1px solid #6c63ff;
+  color: #6c63ff;
+  box-sizing: border-box;
+  border-radius: 35px;
+  width: 83px;
+  line-height: 25px;
+  font-size: 13px;
+  margin-right: 2.1rem;
+  margin-top: 5px;
+  
+
+}
+
+.btn-singleMovie-compare {
+  font-weight: 500;
+  background: #ffffff;
+  border: 1px solid #6c63ff;
+  color: #6c63ff;
+  box-sizing: border-box;
+  border-radius: 35px;
+  width: 83px;
+  line-height: 25px;
+  font-size: 13px;
+  margin-top: 5px;
+
+}
+
+.singleMovie-buttons {
+  padding-top: 10px;
+}
+
+.btn-singleMovie-favourite:hover {
   background-color: #6c63ff;
   color: #ffffff;
 }

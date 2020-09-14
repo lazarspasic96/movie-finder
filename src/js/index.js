@@ -3,73 +3,11 @@ import SearchMovie from './models/SearchMovie'
 import * as domElements from './base'
 import * as SearchMovieView from './views/SearchMovieView'
 import { SingleMovie } from './models/SingleMovie'
+import {singleMovieView} from './views/SingleMovieView'
 import { createHashHistory } from 'history';
 let history = createHashHistory();
 
-
-// central state of app
-const state = {}
-
-//GET LIST OF MOVIES ON SEARCH
-const controlSearch = async (input) => {
-
-    const query = input
-
-    if (query) {
-        state.searchMovie = new SearchMovie(query)
-        await state.searchMovie.getMovies(query)
-        console.log(state.searchMovie)
-        SearchMovieView.renderSearchView(state.searchMovie.moviesData)
-    }
-
-}
-
-//onSearch
-domElements.searchForm.addEventListener('submit', event => {
-    event.preventDefault()
-    history.push(
-        {
-            pathname: '/movies',
-            search: `?searched=${SearchMovieView.getInput()}`
-        }
-
-    )
-
-})
-
-
-// GET A SINGLE MOVIE ON CLICK
-const controlSingleMovie = async (id) => {
-
-    if (id) {
-        state.singleMovie = new SingleMovie(id)
-        await state.singleMovie.getSingleMovie()
-        console.log('radiiiiiiiiiiii')
-    }
-}
-
-
-domElements.contentDiv.addEventListener('click', e => {
-    const card = event.target.closest('.card')
-    if(card) {
-        let singleMovieId = card.dataset.movieid
-        history.push({
-            pathname: '/single-movie',
-            search: `?movieId=${singleMovieId}`
-
-        })
-    }
-})
-
-
-
-
-
-
-
-
 /* ROUTING */
-
 
 history.listen(({ location, action }) => {
     switch (location.pathname) {
@@ -107,6 +45,81 @@ window.addEventListener('load', e => {
         })
     }
 })
+
+
+
+
+
+
+
+
+
+// central state of app
+const state = {}
+
+//GET LIST OF MOVIES ON SEARCH
+const controlSearch = async (input) => {
+
+    const query = input
+
+    if (query) {
+        state.searchMovie = new SearchMovie(query)
+        await state.searchMovie.getMovies(query)
+        console.log(state.searchMovie)
+        SearchMovieView.renderSearchView(state.searchMovie.moviesData)
+    }
+
+}
+
+
+
+//onSearch
+domElements.searchForm.addEventListener('submit', event => {
+    event.preventDefault()
+    history.push(
+        {
+            pathname: '/movies',
+            search: `?searched=${SearchMovieView.getInput()}`
+        }
+
+    )
+
+})
+
+// GET A SINGLE MOVIE ON CLICK
+const controlSingleMovie = async (id) => {
+    console.log('uso sammm')
+
+    try {
+        if (id) {
+            state.singleMovie = new SingleMovie(id)
+            await state.singleMovie.getSingleMovie()
+            singleMovieView(state.singleMovie.singleMovieData)
+        }
+
+    } catch (error) {
+
+    }
+}
+
+
+
+
+domElements.contentDiv.addEventListener('click', e => {
+    const card = event.target.closest('.card')
+    if (card) {
+        let singleMovieId = card.dataset.movieid
+        history.push({
+            pathname: '/single-movie',
+            search: `?movieId=${singleMovieId}`
+
+        })
+    }
+})
+
+
+
+
 
 
 
