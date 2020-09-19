@@ -285,12 +285,17 @@ header {
   display: flex;
   flex-direction: row;
   text-align: center;
+  justify-content: center;
   margin:auto;
   width: 100%
 } 
 
 .compare-movie-container > div {
   width: 100%;
+}
+
+.first-movie-compare {
+  margin-right: 25px;
 }
 
 .compare-movie-input {

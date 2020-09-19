@@ -2,12 +2,11 @@ import '../css/style.css'
 import SearchMovie from './models/SearchMovie'
 import * as domElements from './base'
 import * as SearchMovieView from './views/SearchMovieView'
-import { compareMovieView } from './views/CompareMovieView'
+import { compareMovieView, compareValues } from './views/CompareMovieView'
 import { SingleMovie } from './models/SingleMovie'
 import { singleMovieView } from './views/SingleMovieView'
 import { createHashHistory } from 'history';
 import CompareMovie from './models/CompareMovie'
-import { card } from '../shared/Card'
 let history = createHashHistory();
 
 /* ROUTING */
@@ -26,7 +25,9 @@ history.listen(({ location, action }) => {
             console.log('about')
             break;
         case 'compare-movies':
-            compareMovieView()
+            const movieSide = new URLSearchParams(location.search).get('first')
+                controlCompareMovie(movieSide, 'first')
+    
             break;
         case 'favourite':
             console.log('about')
@@ -59,6 +60,8 @@ window.addEventListener('load', e => {
                     search: history.location.search
                 })
             }
+
+
 
         default:
             break;
@@ -129,72 +132,71 @@ domElements.contentDiv.addEventListener('click', e => {
 //COMPARE MOVIE
 
 const controlCompareMovie = async (id, sideInput) => {
-    console.log('jel uso ovde')
 
-    try {
-        if (id) {
-            state.compareSingleMovie = new CompareMovie(id)
+    if (id) {
+        state.compareSingleMovie = new CompareMovie(id)
 
-            if (sideInput === 'left') {
-                //first prepare UI
-                //leftmovieview
-                await state.compareSingleMovie.getSingleMovieCompare(id)
+        if (sideInput === 'first') {
+            await state.compareSingleMovie.getSingleMovieCompare(id)
 
-                console.log('leftttt', state.compareSingleMovie)
-
-                document.querySelector('.first-movie-compare').insertAdjacentHTML= `<div>${state.compareSingleMovie.movieToCompare.Title} </div>`
-
-
-
-                //update the view
+            if(document.querySelector('.compare-movie-container')) {
+                compareValues(state.compareSingleMovie.movieToCompare)
             }
-
-            else {
-                //first prepare UI
-                compareMovieView()
-
-                //rightmovieview
-                await state.compareSingleMovie.getSingleMovieCompare(id)
-
-
-                //update the view
-            }
+                  compareMovieView()
+                  compareValues(state.compareSingleMovie.movieToCompare)
         }
 
-    } catch (error) {
 
+        else {
+            //first prepare UI
+            //rightmovieview
+            await state.compareSingleMovie.getSingleMovieCompare(id)
+
+            //update the view
+        }
     }
+
+    else {
+        compareMovieView()
+    }
+
+
+
+
+
 }
 
 /* LEFT MOVIE */
 
-domElements.contentDiv.addEventListener('click', event => {
+/* domElements.contentDiv.addEventListener('click', event => {
 
     const cardButton = event.target.closest('.btn-compare')
-    if(cardButton) {
+    if (cardButton) {
         const id = cardButton.dataset.movieid
         controlCompareMovie(id, 'left')
     }
-})
+}) */
 
 domElements.contentDiv.addEventListener('click', event => {
 
     const cardButton = event.target.closest('.btn-compare')
-    if(cardButton) {
+    if (cardButton) {
         const id = cardButton.dataset.movieid
         history.push({
             pathname: 'compare-movies',
-            search: ''
+            search: `?first=${id}`
         })
-        controlCompareMovie(id, 'left')
     }
 })
 
+/* RIGHT MOVIE - AUTOCOMPLETE */
 
 
+const controlAutoComplete = () => {
+
+}
 
 
-/* RIGHT MOVIE */
 
 
 

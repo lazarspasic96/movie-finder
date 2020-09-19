@@ -3,7 +3,6 @@ import favouriteHeart from '../img/favouriteHeart.png'
 import basicHeart from '../img/Heart.png'
 
 export const card = (movie, favourite = false) => {
-    console.log(movie)
     let card = `
         <div class = 'card'> 
         
