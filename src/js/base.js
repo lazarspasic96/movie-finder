@@ -14,3 +14,5 @@ export const btnCompareCard = document.querySelector('.btn-compare')
 export const btnCompareMovie = document.querySelector('.btn-singleMovie-compare')
 
 
+export const autoCompleteInputLeft = document.querySelector('.autocomplete-left')
+export const autoCompleteInputRight = document.querySelector('.autocomplete-right')

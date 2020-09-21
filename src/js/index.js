@@ -7,6 +7,7 @@ import { SingleMovie } from './models/SingleMovie'
 import { singleMovieView } from './views/SingleMovieView'
 import { createHashHistory } from 'history';
 import CompareMovie from './models/CompareMovie'
+import AutoComplete from './models/AutoComplete'
 let history = createHashHistory();
 
 /* ROUTING */
@@ -24,10 +25,21 @@ history.listen(({ location, action }) => {
         case 'about':
             console.log('about')
             break;
-        case 'compare-movies':
-            const movieSide = new URLSearchParams(location.search).get('first')
-                controlCompareMovie(movieSide, 'first')
-    
+        case '/compare-movies':
+            const first = new URLSearchParams(location.search).get('first')
+            const second = new URLSearchParams(location.search).get('second')
+
+            if (first) {
+                controlCompareMovie(first, 'first')
+            }
+
+            else if (second) {
+                controlCompareMovie(second, 'second')
+            }
+
+            else {
+                controlCompareMovie()
+            }
             break;
         case 'favourite':
             console.log('about')
@@ -61,6 +73,8 @@ window.addEventListener('load', e => {
                 })
             }
 
+        case '/compare-movies':
+
 
 
         default:
@@ -85,9 +99,6 @@ const controlSearch = async (input) => {
     }
 
 }
-
-
-
 //onSearch
 domElements.searchForm.addEventListener('submit', event => {
     event.preventDefault()
@@ -98,7 +109,6 @@ domElements.searchForm.addEventListener('submit', event => {
         }
 
     )
-
 })
 
 // GET A SINGLE MOVIE ON CLICK
@@ -117,7 +127,7 @@ const controlSingleMovie = async (id) => {
 }
 
 domElements.contentDiv.addEventListener('click', e => {
-    const card = event.target.closest('.card-img')
+    const card = e.target.closest('.card-img')
     if (card) {
         let singleMovieId = card.dataset.movieid
         history.push({
@@ -127,31 +137,29 @@ domElements.contentDiv.addEventListener('click', e => {
         })
     }
 })
-
-
 //COMPARE MOVIE
-
 const controlCompareMovie = async (id, sideInput) => {
-
     if (id) {
         state.compareSingleMovie = new CompareMovie(id)
-
         if (sideInput === 'first') {
+
             await state.compareSingleMovie.getSingleMovieCompare(id)
 
-            if(document.querySelector('.compare-movie-container')) {
-                compareValues(state.compareSingleMovie.movieToCompare)
+            if (document.querySelector('.compare-movie-container')) {
+                compareValues(state.compareSingleMovie.movieToCompare, 'first')
             }
-                  compareMovieView()
-                  compareValues(state.compareSingleMovie.movieToCompare)
-        }
 
+            else {
+                compareMovieView()
+                compareValues(state.compareSingleMovie.movieToCompare, 'first')
+            }
+        }
 
         else {
             //first prepare UI
             //rightmovieview
+            console.log('it works')
             await state.compareSingleMovie.getSingleMovieCompare(id)
-
             //update the view
         }
     }
@@ -159,10 +167,6 @@ const controlCompareMovie = async (id, sideInput) => {
     else {
         compareMovieView()
     }
-
-
-
-
 
 }
 
@@ -183,36 +187,40 @@ domElements.contentDiv.addEventListener('click', event => {
     if (cardButton) {
         const id = cardButton.dataset.movieid
         history.push({
-            pathname: 'compare-movies',
+            pathname: '/compare-movies',
             search: `?first=${id}`
         })
     }
 })
 
-/* RIGHT MOVIE - AUTOCOMPLETE */
+/* AUTOCOMPLETE */
 
 
-const controlAutoComplete = () => {
+const controlAutoComplete = async (query) => {
+
+
+    if(!state.autoComplete ) {
+        state.autoComplete = new AutoComplete(query)
+    }
+
+    await state.autoComplete.getAutoCompleteData(query)
 
 }
 
 
 
+let id;
+domElements.contentDiv.addEventListener('keyup', e => {
+    const input = e.target.closest('.compare-movie-input ')
+
+    if (id) {
+        clearTimeout(id)
+    }
 
 
+    id = setTimeout(() => {
+        controlAutoComplete(e.target.value)
+    }, 1000);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+})
 
