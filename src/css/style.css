@@ -184,9 +184,8 @@ header {
 
 .singleMovie-content {
   flex-direction: row;
-  justify-content:  center;
+  justify-content: center;
   padding: 18px;
- 
 }
 
 .imgMovie-container {
@@ -221,8 +220,6 @@ header {
   line-height: 18px;
 }
 
-
-
 .btn-singleMovie-favourite {
   background: #ffffff;
   border: 1px solid #6c63ff;
@@ -234,8 +231,6 @@ header {
   font-size: 13px;
   margin-right: 2.1rem;
   margin-top: 5px;
-  
-
 }
 
 .btn-singleMovie-compare {
@@ -249,7 +244,6 @@ header {
   line-height: 25px;
   font-size: 13px;
   margin-top: 5px;
-
 }
 
 .singleMovie-buttons {
@@ -263,8 +257,8 @@ header {
 
 @media (max-width: 766px) {
   .singleMovie-content {
-     flex-direction: column;
-     align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .singleMovie-mainInfo {
@@ -281,14 +275,14 @@ header {
   }
 }
 
-.compare-movie-container{
+.compare-movie-container {
   display: flex;
   flex-direction: row;
   text-align: center;
   justify-content: center;
-  margin:auto;
-  width: 100%
-} 
+  margin: auto;
+  width: 100%;
+}
 
 .compare-movie-container > div {
   width: 100%;
@@ -296,10 +290,11 @@ header {
 
 .first-movie-compare {
   margin-right: 25px;
+  position: relative;
 }
 
 .compare-movie-input {
-  width:  100%;
+  width: 100%;
   max-width: 100%;
   outline: none !important;
   border-radius: 4px;
@@ -308,3 +303,11 @@ header {
   border: 1px solid #dbdbdb;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
 }
+
+.active {
+  background: #ffffff;
+  z-index: 20;
+  position: absolute;
+  top: 39px;
+}
+

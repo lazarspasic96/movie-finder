@@ -8,6 +8,7 @@ import { singleMovieView } from './views/SingleMovieView'
 import { createHashHistory } from 'history';
 import CompareMovie from './models/CompareMovie'
 import AutoComplete from './models/AutoComplete'
+import * as autoCompleteView from './views/AutoCompleteView'
 let history = createHashHistory();
 
 /* ROUTING */
@@ -184,6 +185,8 @@ const controlCompareMovie = async (id, sideInput) => {
 domElements.contentDiv.addEventListener('click', event => {
 
     const cardButton = event.target.closest('.btn-compare')
+
+
     if (cardButton) {
         const id = cardButton.dataset.movieid
         history.push({
@@ -196,31 +199,49 @@ domElements.contentDiv.addEventListener('click', event => {
 /* AUTOCOMPLETE */
 
 
-const controlAutoComplete = async (query) => {
+const controlAutoComplete = async (query, side) => {
+    autoCompleteView.clearResults(side)
+    try {
+        if (!state.autoComplete) {
+            state.autoComplete = new AutoComplete(query)
+        }
+        await state.autoComplete.getAutoCompleteData(query)
+        autoCompleteView.dropDownMenu(state.autoComplete.autocompleteList, side)
 
+        if (state.autoComplete.autocompleteList.Error) {
+            alert(state.autoComplete.autocompleteList.Error)
+        }
+    } catch (error) {
 
-    if(!state.autoComplete ) {
-        state.autoComplete = new AutoComplete(query)
     }
-
-    await state.autoComplete.getAutoCompleteData(query)
 
 }
 
 
 
+
+
+
+
 let id;
-domElements.contentDiv.addEventListener('keyup', e => {
+
+domElements.contentDiv.addEventListener('input', e => {
     const input = e.target.closest('.compare-movie-input ')
 
-    if (id) {
-        clearTimeout(id)
+    let setSide = ''
+
+    if (input) {
+        e.target.classList.contains('autocomplete-left') ? 
+        setSide = 'left' : 
+        setSide = 'right';
+        autoCompleteView.toggleClass(setSide)
+        if (id) {
+            clearTimeout(id)
+        }
+        id = setTimeout(() => {
+            controlAutoComplete(e.target.value, setSide)
+
+        }, 1000);
     }
-
-
-    id = setTimeout(() => {
-        controlAutoComplete(e.target.value)
-    }, 1000);
-
 })
 

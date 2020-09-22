@@ -1,16 +1,20 @@
 import * as domElements from '../base'
 
 export const compareMovieView = () => {
-      const compareView = `<div class='compare-movie-container'>
+    const compareView = `<div class='compare-movie-container'>
     <div class='first-movie-compare'>
         <input class='compare-movie-input autocomplete-left' type='text'/>
-        <div class = 'first-movie-values'> 
+
+
+        <div class = 'first-movie-values'></div>
+
+        <div class = 'autocomplete dropdown-left'></div>
         </div>
-    </div>
-    <div class='second-movie-compare'>
-        <input class='compare-movie-input autocomplete-right' type='text' />
-        <div class = 'second-movie-values'> 
-        </div>
+
+        <div class='second-movie-compare'>
+            <input class='compare-movie-input autocomplete-right' type='text' />
+        <div class = 'second-movie-values'></div>
+        <div class = 'autocomplete dropdown-right'></div>
     </div>
 </div>`
     domElements.contentDiv.innerHTML = compareView
@@ -60,12 +64,9 @@ const rightMovie = (data) => {
 }
 
 export const compareValues = (movieData, side) => {
-    console.log('sideeee', side)
-    if (movieData && side === 'first') {
-    document.querySelector('.first-movie-values').insertAdjacentHTML('beforebegin', leftMovie(movieData))
-    }
-    if(movieData && side === 'second') {
-        document.querySelector('.second-movie-values').insertAdjacentHTML('beforebegin', rightMovie(movieData))
+
+    document.querySelector(`.${side}-movie-values`).innerHTML = 
+    side === 'first' ? leftMovie(movieData) : rightMovie(movieData)
+
     }
 
-}
