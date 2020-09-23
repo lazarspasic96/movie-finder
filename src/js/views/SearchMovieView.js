@@ -9,7 +9,7 @@ export const getInput = () => domElements.searchInput.value
 const renderCard = (movieInfo) => {
 console.log(movieInfo, 'nizzzz')
     movieInfo.slice(0, 9).forEach(singleMovie => {
-       domElements.contentDiv.insertAdjacentHTML('afterbegin', card(singleMovie))
+       domElements.contentDiv.insertAdjacentHTML('beforeend', card(singleMovie))
     });
 
 }

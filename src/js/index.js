@@ -157,11 +157,16 @@ const controlCompareMovie = async (id, sideInput) => {
         }
 
         else {
-            //first prepare UI
-            //rightmovieview
-            console.log('it works')
             await state.compareSingleMovie.getSingleMovieCompare(id)
-            //update the view
+
+            if (document.querySelector('.compare-movie-container')) {
+                compareValues(state.compareSingleMovie.movieToCompare, 'second')
+            }
+
+            else {
+                compareMovieView()
+                compareValues(state.compareSingleMovie.movieToCompare, 'second')
+            }
         }
     }
 
@@ -205,8 +210,15 @@ const controlAutoComplete = async (query, side) => {
         if (!state.autoComplete) {
             state.autoComplete = new AutoComplete(query)
         }
+
         await state.autoComplete.getAutoCompleteData(query)
-        autoCompleteView.dropDownMenu(state.autoComplete.autocompleteList, side)
+        autoCompleteView.toggleClass(side, state.autoComplete.autocompleteList)
+        if (state.autoComplete) {
+            autoCompleteView.dropDownMenu(state.autoComplete.autocompleteList, side)
+        }
+
+
+
 
         if (state.autoComplete.autocompleteList.Error) {
             alert(state.autoComplete.autocompleteList.Error)
@@ -217,24 +229,17 @@ const controlAutoComplete = async (query, side) => {
 
 }
 
-
-
-
-
-
-
 let id;
-
 domElements.contentDiv.addEventListener('input', e => {
     const input = e.target.closest('.compare-movie-input ')
 
     let setSide = ''
 
     if (input) {
-        e.target.classList.contains('autocomplete-left') ? 
-        setSide = 'left' : 
-        setSide = 'right';
-        autoCompleteView.toggleClass(setSide)
+        e.target.classList.contains('autocomplete-left') ?
+            setSide = 'left' :
+            setSide = 'right';
+
         if (id) {
             clearTimeout(id)
         }
@@ -242,6 +247,25 @@ domElements.contentDiv.addEventListener('input', e => {
             controlAutoComplete(e.target.value, setSide)
 
         }, 1000);
+    }
+})
+
+domElements.contentDiv.addEventListener('click', e => {
+    const item = e.target.closest('.dropDownItem')
+
+
+    if (item) {
+
+        const id = item.dataset.movieid
+        let setSide = ''
+        console.log(item.parentNode.classList)
+        item.parentNode.classList.contains('dropdown-left') ?
+            setSide = 'first' :
+            setSide = 'second';
+        history.push({
+            pathname: '/compare-movies',
+            search: `?${setSide + '=' + id}`
+        })
     }
 })
 

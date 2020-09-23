@@ -15,7 +15,7 @@ console.log(movieData)
             <h3>${movieData.title} </h3>
             <p>${movieData.description} </p>
             <h3>Actors</h3>
-            <p>${movieData.description} </p>
+            <p>${movieData.actors} </p>
             <h3>Awards</h3>
             <p>${movieData.awards} </p>
                 <div class = 'singleMovie-buttons'>   

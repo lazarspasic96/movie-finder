@@ -108,7 +108,7 @@ header {
   box-shadow: 20px 20px 25px rgba(195, 205, 215, 0.5);
   border-radius: 16px;
   margin: auto;
-  margin-right: 56px;
+  margin-right: 50px;
   margin-bottom: 46px;
 }
 
@@ -292,6 +292,9 @@ header {
   margin-right: 25px;
   position: relative;
 }
+.second-movie-compare {
+  position: relative;
+}
 
 .compare-movie-input {
   width: 100%;
@@ -309,5 +312,29 @@ header {
   z-index: 20;
   position: absolute;
   top: 39px;
+  left: 2px;
+  height: 450px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
+.dropDownItem {
+  padding: 5px 5px 5px 0px;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropDownItem:hover {
+  background-color: #f5f5f5;
+}
+.dropDownItem > img {
+  height: 55px;
+  margin-right: 10px;
+}
+.dropDownItem > p {
+  font-size: 10px;
+}
