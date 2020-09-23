@@ -13,7 +13,8 @@ export class SingleMovie {
             actors: results.data.Actors,
             image: results.data.Poster,
             title: results.data.Title,
-            description: results.data.Plot
+            description: results.data.Plot,
+            imdbID: results.data.imdbID
         }
     }
 }

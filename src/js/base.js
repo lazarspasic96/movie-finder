@@ -13,4 +13,7 @@ export const movieCard = document.querySelector('.card')
 export const btnCompareCard = document.querySelector('.btn-compare')
 export const btnCompareMovie = document.querySelector('.btn-singleMovie-compare')
 
-export const firstt =  document.querySelector('.first-movie-values')
+
+
+export const firstMovieValues = document.querySelector('.first-movie-compare ')
+export const secondMovieValues = document.querySelector('.second-movie-compare ')

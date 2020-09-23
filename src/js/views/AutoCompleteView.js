@@ -1,21 +1,33 @@
 
+const toggleDropdown = (side) => {
 
-
-export const clearResults = (side) => document.querySelector(`.dropdown-${side}`).innerHTML = ''
-export const toggleClass = (side,active) => {
-
-    if(active) {
-        side === 'left' ?
-        document.querySelector('.dropdown-left').classList.add('active') :
-        document.querySelector('.dropdown-right').classList.add('active')
-    }
-    else {
-        side === 'left' ?
-        document.querySelector('.dropdown-left').classList.remove('active') :
-        document.querySelector('.dropdown-right').classList.remove('active')
-    }
+    document.querySelector(`.dropdown-${side}`).classList.remove('isActive')
 
 }
+
+export const clearResults = (side) => {
+    document.querySelector(`.dropdown-${side}`).innerHTML = ''
+    toggleDropdown(side)
+}
+
+export const toggleClass = (side, query) => {
+
+    if (query) {
+        side === 'left' ?
+            document.querySelector('.dropdown-left').classList.add('active') :
+            document.querySelector('.dropdown-right').classList.add('active')
+    }
+
+    else {
+        side === 'left' ?
+            document.querySelector('.dropdown-left').classList.add('isActive') :
+            document.querySelector('.dropdown-right').classList.add('isActive')
+    }
+
+
+}
+
+
 
 const item = (movie) => {
     const item = `
@@ -29,10 +41,10 @@ const item = (movie) => {
 }
 
 const renderResults = (data, side) => {
-console.log('jel uso ovde uopsteee', data)
+    console.log('jel uso ovde uopsteee', data)
 
     data.forEach(movie => {
-    document.querySelector(`.dropdown-${side}`).insertAdjacentHTML('afterbegin', item(movie)) 
+        document.querySelector(`.dropdown-${side}`).insertAdjacentHTML('afterbegin', item(movie))
     });
 }
 

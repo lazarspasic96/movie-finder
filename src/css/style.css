@@ -255,26 +255,6 @@ header {
   color: #ffffff;
 }
 
-@media (max-width: 766px) {
-  .singleMovie-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .singleMovie-mainInfo {
-    padding-left: 0px;
-    margin-top: 15px;
-  }
-
-  .btn-singleMovie-favourite {
-    margin-right: 0px;
-  }
-
-  .content-div {
-    padding: 0px;
-  }
-}
-
 .compare-movie-container {
   display: flex;
   flex-direction: row;
@@ -299,6 +279,7 @@ header {
 .compare-movie-input {
   width: 100%;
   max-width: 100%;
+  min-width: 330px;
   outline: none !important;
   border-radius: 4px;
   line-height: 28px;
@@ -335,6 +316,82 @@ header {
   height: 55px;
   margin-right: 10px;
 }
-.dropDownItem > p {
-  font-size: 10px;
+
+.media {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
 }
+
+.media-content > p {
+  font-size: 14px;
+}
+
+.image-media {
+  width: 130px;
+  margin-right: 15px;
+}
+
+.image-media > img {
+  width: inherit;
+}
+
+.first-movie-values {
+  padding: 10px;
+}
+
+.second-movie-values {
+  padding: 10px;
+}
+
+.compared-value {
+  width: 100%;
+  min-width: 320px;
+  background: #ffffff;
+  box-shadow: 20px 20px 25px rgba(195, 205, 215, 0.5);
+  border-radius: 14px;
+  height: 117px;
+  margin-bottom: 10px;
+  text-align: left;
+  padding: 15px;
+}
+
+.compared-value > p {
+  font-size: 25px;
+  color: #6c63ff;
+  margin: auto;
+}
+
+.compared-value:hover {
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+
+.isActive {
+  display: none;
+}
+
+@media (max-width: 766px) {
+  .singleMovie-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .singleMovie-mainInfo {
+    padding-left: 0px;
+    margin-top: 15px;
+  }
+
+  .btn-singleMovie-favourite {
+    margin-right: 0px;
+  }
+
+  .content-div {
+    padding: 0px;
+  }
+  .compare-movie-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
