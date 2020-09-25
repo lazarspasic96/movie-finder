@@ -294,9 +294,9 @@ header {
   position: absolute;
   top: 39px;
   left: 2px;
-  height: 450px;
-  overflow: scroll;
-  overflow-x: hidden;
+  max-height: 450px;
+  overflow-y: scroll;
+
 }
 
 .dropDownItem {
