@@ -10,6 +10,7 @@ import CompareMovie from './models/CompareMovie'
 import AutoComplete from './models/AutoComplete'
 import * as autoCompleteView from './views/AutoCompleteView'
 import { card } from '../shared/Card'
+import FavouriteMovies from './models/FavouriteMovies'
 let history = createHashHistory();
 
 /* ROUTING */
@@ -44,7 +45,7 @@ history.listen(({ location, action }) => {
             }
             break;
         case 'favourite':
-            console.log('about')
+            controlFavourite()
             break;
         case '/single-movie':
             const movieId = new URLSearchParams(location.search).get('movieId')
@@ -277,7 +278,6 @@ domElements.contentDiv.addEventListener('click', e => {
     if (item) {
         const id = item.dataset.movieid
         let setSide = ''
-        console.log(item.parentNode.classList)
         item.parentNode.classList.contains('dropdown-left') ?
             setSide = 'first' :
             setSide = 'second';
@@ -299,5 +299,74 @@ document.addEventListener('click', e => {
         }
     }
 
+})
+
+/* FAVOURITE CONTROLLER */
+
+const controlFavourite = async (id, place) => {
+
+
+
+    if (id) {
+        if (!state.favourite) state.favourite = new FavouriteMovies();
+
+        //movie is not in favourite list
+        if (!state.favourite.isFavourite(id)) {
+
+            //add movie to the favourite list
+            // change style of favourite btn
+
+            // get data and push movie to the favourite 
+            if (place === 'card') {
+                state.favourite.addMovie(state.searchMovie.getDataFavourite(id))
+            }
+            else {
+                state.favourite.addMovie(state.singleMovie.singleMovieData)
+            }
+
+
+        }
+
+        //movie is in favourite list
+        else {
+            state.favourite.deleteMovie(id)
+
+        }
+
+        console.log(state)
+
+
+    }
+
+}
+
+
+/* FAVOURITE HANDLER */
+
+domElements.contentDiv.addEventListener('click', e => {
+
+    const favouriteCardBtn = e.target.closest('.btn-favourite')
+
+
+    if (favouriteCardBtn) {
+
+        const id = favouriteCardBtn.dataset.movieid
+
+        controlFavourite(id, 'card')
+    }
+})
+
+
+domElements.contentDiv.addEventListener('click', e => {
+
+    const favouriteCardBtn = e.target.closest('.btn-singleMovie-favourite')
+
+
+    if (favouriteCardBtn) {
+
+        const id = favouriteCardBtn.dataset.movieid
+
+        controlFavourite(id, 'movie')
+    }
 })
 

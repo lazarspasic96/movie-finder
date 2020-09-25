@@ -19,7 +19,7 @@ console.log(movieData)
             <h3>Awards</h3>
             <p>${movieData.awards} </p>
                 <div class = 'singleMovie-buttons'>   
-                    <button class = 'btn-singleMovie-favourite'>Favourite</button>
+                    <button class = 'btn-singleMovie-favourite' data-movieid=${movieData.imdbID}>Favourite</button>
                     <button class = 'btn-singleMovie-compare' data-movieid=${movieData.imdbID}>Compare</button>
                  </div>
          

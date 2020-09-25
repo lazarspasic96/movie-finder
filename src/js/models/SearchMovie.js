@@ -11,4 +11,20 @@ export default class SearchMovie {
         console.log(this.moviesData = results.data.Search)
         this.moviesData = results.data.Search
     }
+
+    getDataFavourite (id) {
+        let movie = null
+        for (let i of this.moviesData) {
+            
+            if(i.imdbID === id) {
+                movie = i
+            }
+        }
+
+        return {
+            imdbID: movie.imdbID,
+            image: movie.Poster,
+            title: movie.Title
+        }
+    }
 }

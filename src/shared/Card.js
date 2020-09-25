@@ -13,7 +13,7 @@ export const card = (movie, favourite = false) => {
                 <p class = 'movie-info'>${movie.Title}</p>
             
                
-                    <button class = 'btn-favourite'>Favourite</button>
+                    <button class = 'btn-favourite'  data-movieid = ${movie.imdbID}>Favourite</button>
                     <button class = 'btn-compare' data-movieid = ${movie.imdbID}>Compare</button>
               
                
