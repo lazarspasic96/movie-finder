@@ -2,7 +2,8 @@ import poster from '../img/Heart.png'
 import favouriteHeart from '../img/favouriteHeart.png'
 import basicHeart from '../img/Heart.png'
 
-export const card = (movie, favourite = false) => {
+export const card = (movie, isFavouriteRef) => {
+
     let card = `
         <div class = 'card'> 
         

@@ -3,9 +3,9 @@ import * as domElements from '../base'
 
 
 
-export const singleMovieView = (movieData) => {
+export const singleMovieView = (movieData, checkClassFavourite) => {
 
-console.log(movieData)
+
     const singleMovie = domElements.contentDiv.innerHTML =  `
     <div class = 'singleMovie-content flex-container'> 
         <div class = 'imgMovie-container'>
@@ -19,7 +19,7 @@ console.log(movieData)
             <h3>Awards</h3>
             <p>${movieData.awards} </p>
                 <div class = 'singleMovie-buttons'>   
-                    <button class = 'btn-singleMovie-favourite' data-movieid=${movieData.imdbID}>Favourite</button>
+                    <button class = 'btn-singleMovie-favourite ${checkClassFavourite(movieData.imdbID)  ? 'favourited' : ''}' data-movieid=${movieData.imdbID}>Favourite</button>
                     <button class = 'btn-singleMovie-compare' data-movieid=${movieData.imdbID}>Compare</button>
                  </div>
          

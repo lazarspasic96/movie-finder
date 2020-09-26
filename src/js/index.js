@@ -9,11 +9,13 @@ import { createHashHistory } from 'history';
 import CompareMovie from './models/CompareMovie'
 import AutoComplete from './models/AutoComplete'
 import * as autoCompleteView from './views/AutoCompleteView'
-import { card } from '../shared/Card'
 import FavouriteMovies from './models/FavouriteMovies'
+import * as FavouriteView from './views/FavouriteMoviesView'
 let history = createHashHistory();
 
 /* ROUTING */
+
+
 
 history.listen(({ location, action }) => {
     console.log(location)
@@ -116,7 +118,7 @@ const controlSingleMovie = async (id) => {
         if (id) {
             state.singleMovie = new SingleMovie(id)
             await state.singleMovie.getSingleMovie()
-            singleMovieView(state.singleMovie.singleMovieData)
+            singleMovieView(state.singleMovie.singleMovieData, state.favourite.isFavourite.bind(state.favourite, id))
         }
 
     } catch (error) {
@@ -303,8 +305,8 @@ document.addEventListener('click', e => {
 
 /* FAVOURITE CONTROLLER */
 
-const controlFavourite = async (id, place) => {
-
+state.favourite = new FavouriteMovies();
+const controlFavourite = async (id, place, e) => {
 
 
     if (id) {
@@ -319,54 +321,49 @@ const controlFavourite = async (id, place) => {
             // get data and push movie to the favourite 
             if (place === 'card') {
                 state.favourite.addMovie(state.searchMovie.getDataFavourite(id))
+           
             }
             else {
                 state.favourite.addMovie(state.singleMovie.singleMovieData)
+            
             }
-
+            FavouriteView.toggleFavourite(true, e)
 
         }
 
         //movie is in favourite list
         else {
             state.favourite.deleteMovie(id)
+            FavouriteView.toggleFavourite(false, e)
 
         }
-
-        console.log(state)
-
-
     }
 
+
+    //click just happend in the navbar
+    else {
+        console.log('navbarrrrrr')
+    }
+    console.log(state.favourite)
 }
 
 
 /* FAVOURITE HANDLER */
 
 domElements.contentDiv.addEventListener('click', e => {
-
     const favouriteCardBtn = e.target.closest('.btn-favourite')
-
-
     if (favouriteCardBtn) {
-
         const id = favouriteCardBtn.dataset.movieid
-
-        controlFavourite(id, 'card')
+        controlFavourite(id, 'card', favouriteCardBtn)
     }
 })
 
-
+// in Single Movie
 domElements.contentDiv.addEventListener('click', e => {
-
     const favouriteCardBtn = e.target.closest('.btn-singleMovie-favourite')
-
-
     if (favouriteCardBtn) {
-
         const id = favouriteCardBtn.dataset.movieid
-
-        controlFavourite(id, 'movie')
+        controlFavourite(id, 'singleMovie', favouriteCardBtn)
     }
 })
 

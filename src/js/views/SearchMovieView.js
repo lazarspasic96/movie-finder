@@ -6,18 +6,19 @@ export const getInput = () => domElements.searchInput.value
 
 
 
-const renderCard = (movieInfo) => {
+const renderCard = (movieInfo, isFavouriteRef) => {
 console.log(movieInfo, 'nizzzz')
     movieInfo.slice(0, 9).forEach(singleMovie => {
-       domElements.contentDiv.insertAdjacentHTML('beforeend', card(singleMovie))
+       domElements.contentDiv.insertAdjacentHTML('beforeend', card(singleMovie, isFavouriteRef))
     });
 
 }
 
-
-export const renderSearchView = (movieInfo) => {
+export const renderSearchView = (movieInfo, isFavouriteRef ) => {
     domElements.contentDiv.innerHTML = ''
-    renderCard(movieInfo)
+    renderCard(movieInfo, isFavouriteRef)
+
+
     
 
 }

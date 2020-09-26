@@ -15,7 +15,8 @@ export default class FavouriteMovies {
     }
 
     isFavourite (id) {
-        return this.favouriteList.findIndex(fav => fav.imdbID === id) !== -1;
+
+             return this.favouriteList.findIndex(fav => fav.imdbID === id) !== -1
     }
 
     getFav() {
