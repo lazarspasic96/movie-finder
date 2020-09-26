@@ -78,7 +78,12 @@ window.addEventListener('load', e => {
                     search: history.location.search
                 })
             }
-        case '/compare-movies':
+        case 'compare-movies':
+            controlCompareMovie()
+            break;
+        case 'favourite':
+            controlFavourite()
+
         default:
             break;
     }
@@ -88,18 +93,26 @@ window.addEventListener('load', e => {
 /* CENTRAL STATE */
 const state = {}
 
-/* CONTROL SEARCH - LANDING PAGE */
-const controlSearch = async (input) => {
+/* PRESIST DATA */
+state.favourite = new FavouriteMovies()
+state.favourite.readStorage()
 
-    const query = input
+
+/* CONTROL SEARCH - LANDING PAGE */
+const controlSearch = async (query) => {
+
+
 
     if (query) {
         state.searchMovie = new SearchMovie(query)
         await state.searchMovie.getMovies(query)
-        SearchMovieView.renderSearchView(state.searchMovie.moviesData)
+        SearchMovieView.renderSearchView(state.searchMovie.moviesData, state.favourite.isFavourite.bind(state.favourite))
     }
 
+
+
 }
+
 /* ON SEARCH - LANDING PAGE */
 domElements.searchForm.addEventListener('submit', event => {
     event.preventDefault()
@@ -305,7 +318,7 @@ document.addEventListener('click', e => {
 
 /* FAVOURITE CONTROLLER */
 
-state.favourite = new FavouriteMovies();
+
 const controlFavourite = async (id, place, e) => {
 
 
@@ -321,11 +334,11 @@ const controlFavourite = async (id, place, e) => {
             // get data and push movie to the favourite 
             if (place === 'card') {
                 state.favourite.addMovie(state.searchMovie.getDataFavourite(id))
-           
+
             }
             else {
                 state.favourite.addMovie(state.singleMovie.singleMovieData)
-            
+
             }
             FavouriteView.toggleFavourite(true, e)
 
@@ -336,15 +349,16 @@ const controlFavourite = async (id, place, e) => {
             state.favourite.deleteMovie(id)
             FavouriteView.toggleFavourite(false, e)
 
+
+
         }
     }
 
 
     //click just happend in the navbar
     else {
-        console.log('navbarrrrrr')
+        FavouriteView.favouriteList(state.favourite.favouriteList)
     }
-    console.log(state.favourite)
 }
 
 
@@ -367,3 +381,11 @@ domElements.contentDiv.addEventListener('click', e => {
     }
 })
 
+domElements.contentDiv.addEventListener('click', e => {
+
+    const favourite = e.target.closest('#favouriteHandler')
+
+    if (favourite) {
+        controlFavourite()
+    }
+})

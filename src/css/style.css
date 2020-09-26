@@ -17,6 +17,10 @@ header {
   color: #6c63ff;
 }
 
+.dropdownNavbar {
+  display: none
+}
+
 .nav-item > a {
   font-style: normal;
   font-weight: normal;
@@ -99,6 +103,7 @@ header {
   width: 100%;
   margin: auto;
   padding: 25px;
+  justify-content: center;
 }
 
 .card {
@@ -107,14 +112,14 @@ header {
   background: #ffffff;
   box-shadow: 20px 20px 25px rgba(195, 205, 215, 0.5);
   border-radius: 16px;
-  margin: auto;
-  margin-right: 40px;
   margin-bottom: 46px;
+  margin-right: 25px;
+
 }
+
 
 .card:hover {
   box-shadow: 20px 20px 20px 20px rgba(200, 205, 215, 0.4);
-  border: 2px solid   #f5f5f5;
 }
 
 .card-img {
@@ -249,7 +254,7 @@ header {
   line-height: 25px;
   font-size: 13px;
   margin-top: 5px;
-  outline: none;
+  outline: none !important;
 }
 
 .singleMovie-buttons {
@@ -379,6 +384,12 @@ header {
 }
 
 @media (max-width: 766px) {
+
+
+
+
+
+
   .singleMovie-content {
     flex-direction: column;
     align-items: center;
