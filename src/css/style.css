@@ -114,12 +114,16 @@ header {
   border-radius: 16px;
   margin-bottom: 46px;
   margin-right: 25px;
+  transition: all 0.5s;
+  cursor: pointer;
 
 }
 
 
 .card:hover {
   box-shadow: 20px 20px 20px 20px rgba(200, 205, 215, 0.4);
+  transform: translateY(-7px);
+
 }
 
 .card-img {
