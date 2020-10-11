@@ -4,4 +4,4 @@
 Tech stack:  JavaScript(ES6 modules, Axios, async-await, DOM, explicit binding), MVC design pattern, WebPack,  HTML & CSS (FlexBox, animation, absolute positioning), BootStrap.
 
 
-<b> Currently I am working on new features on this app, and project will be live soon. >/b>
+<b> Currently I am working on new features on this app, and project will be live soon. </b>
