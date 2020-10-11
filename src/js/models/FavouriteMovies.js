@@ -12,7 +12,6 @@ export default class FavouriteMovies {
     }
 
     deleteMovie(id) {
-        console.log('uso sad da izbrise')
         const index = this.favouriteList.findIndex(fav => fav.imdbID === id)  //return 1 if movie is liked
         this.favouriteList.splice(index, 1)
         this.saveData()

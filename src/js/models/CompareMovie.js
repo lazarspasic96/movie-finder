@@ -6,7 +6,7 @@ export default  class CompareMovie {
     }
 
     async getSingleMovieCompare () {
-        const results = await axios(`http://www.omdbapi.com/?apikey=b32e7243&i=${this.movieId}`)
+        const results = await axios(`https://www.omdbapi.com/?apikey=b32e7243&i=${this.movieId}`)
         this.movieToCompare = results.data
     }
 }

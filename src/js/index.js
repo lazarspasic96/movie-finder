@@ -11,6 +11,7 @@ import AutoComplete from './models/AutoComplete'
 import * as autoCompleteView from './views/AutoCompleteView'
 import FavouriteMovies from './models/FavouriteMovies'
 import * as FavouriteView from './views/FavouriteMoviesView'
+import {spinner} from '../shared/spinner'
 let history = createHashHistory();
 
 /* ROUTING */
@@ -102,12 +103,20 @@ state.favourite.readStorage()
 const controlSearch = async (query) => {
 
 
+    try {
+        if (query) {
+            state.searchMovie = new SearchMovie(query)
+            domElements.contentDiv.innerHTML = spinner()
+            await state.searchMovie.getMovies(query)
 
-    if (query) {
-        state.searchMovie = new SearchMovie(query)
-        await state.searchMovie.getMovies(query)
-        SearchMovieView.renderSearchView(state.searchMovie.moviesData, state.favourite.isFavourite.bind(state.favourite))
+
+
+            SearchMovieView.renderSearchView(state.searchMovie.moviesData, state.favourite.isFavourite.bind(state.favourite))
+        }
+    } catch (error) {
+        alert('Something is wrong please try again later')
     }
+
 
 
 
@@ -130,12 +139,13 @@ const controlSingleMovie = async (id) => {
     try {
         if (id) {
             state.singleMovie = new SingleMovie(id)
+            domElements.contentDiv.innerHTML = spinner()
             await state.singleMovie.getSingleMovie()
             singleMovieView(state.singleMovie.singleMovieData, state.favourite.isFavourite.bind(state.favourite, id))
         }
 
     } catch (error) {
-
+        alert('Something is wrong, please try again later')
     }
 }
 
@@ -178,6 +188,7 @@ const controlCompareMovie = async (id, sideInput) => {
 
         //Left side
         else {
+  
             await state.compareSingleMovie.getSingleMovieCompare(id)
             document.querySelector('.autocomplete-right').value = state.compareSingleMovie.movieToCompare.Title;
             if (document.querySelector('.compare-movie-container')) {

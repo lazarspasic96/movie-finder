@@ -3,7 +3,7 @@ import * as domElements from '../base'
 export const compareMovieView = () => {
     const compareView = `<div class='compare-movie-container'>
     <div class='first-movie-compare'>
-        <input class='compare-movie-input autocomplete-left' type='text'/>
+        <input placeholder = 'Search for movie'  class='compare-movie-input autocomplete-left' type='text'/>
 
 
         <div class = 'first-movie-values summary'></div>
@@ -12,7 +12,7 @@ export const compareMovieView = () => {
         </div>
 
         <div class='second-movie-compare summary'>
-            <input class='compare-movie-input autocomplete-right' type='text' />
+            <input placeholder = 'Search for movie' class='compare-movie-input autocomplete-right' type='text' />
         <div class = 'second-movie-values'></div>
         <div class = 'autocomplete dropdown-right'></div>
     </div>

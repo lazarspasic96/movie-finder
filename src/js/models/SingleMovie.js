@@ -7,7 +7,7 @@ export class SingleMovie {
     }
 
     async getSingleMovie() {
-        const results = await axios(`http://www.omdbapi.com/?i=${this.id}&apikey=b32e7243`)
+        const results = await axios(`https://www.omdbapi.com/?i=${this.id}&apikey=b32e7243`)
         this.singleMovieData = {
             awards: results.data.Awards,
             actors: results.data.Actors,

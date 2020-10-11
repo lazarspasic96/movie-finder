@@ -6,7 +6,7 @@ export default class AutoComplete {
     }
 
     async getAutoCompleteData(query) {
-        const autoCompleteData = await axios(`http://www.omdbapi.com/?apikey=b32e7243&s=${query}`)
+        const autoCompleteData = await axios(`https://www.omdbapi.com/?apikey=b32e7243&s=${query}`)
         this.autocompleteList = autoCompleteData.data.Search
     }
 }
