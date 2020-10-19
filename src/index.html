@@ -30,20 +30,15 @@
               </ul>
             </nav>  
 
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Menu
-                  </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <button class="dropdown-item" type="button">Action</button>
-                  <button class="dropdown-item" type="button">Another action</button>
-                  <button class="dropdown-item" type="button">Something else here</button>
-                </div>
-              </div>
-
-     
-      
-   
+          <div class="hamburger-nav">
+      <label for = 'toggle'>&#9776;</label>
+      <input type="checkbox" id="toggle" >
+          <div class="hamburger-menu">
+            <a class="nav-link navCompare" href="#/compare-movies">Compare Movies</a>
+            <a class="nav-link navFavourite" href="#favourite">Favourite</a>
+            <a class="nav-link navAbout" href="#about">About</a>
+          </div>
+          </div>
         </header>
 
 
@@ -55,10 +50,10 @@
             </div>
 
             <div class="col-md-6 xl-6 sm-12 search-container" >
-                <p>
+                <p class="mainText">
                     Explore the world of movies
                 </p>
-                <div>
+                <div class="searchBox">
                     <form class="search">
                          <input class="search-input" type="text" placeholder="Search for movies">
                         <button class="search-btn">Go!</button>
